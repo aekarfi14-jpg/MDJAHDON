@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>MDJAHDON - 100</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:#060608;color:#EDE9D6;font-family:system-ui,-apple-system,'Segoe UI',Tahoma,Arial,sans-serif;overscroll-behavior:none;overflow-x:hidden}
+.scr{display:none;min-height:100dvh;padding:18px;flex-direction:column}
+.scr.on{display:flex}
+.c{background:linear-gradient(180deg,#14141a 0%,#0f0f13 100%);border:1px solid #23232b;border-radius:22px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.logo{font-weight:900;font-size:38px;letter-spacing:-1px;text-align:center;line-height:.9}
+.logo b{color:#8a9a5b}
+.sublogo{font-size:9px;letter-spacing:4px;color:#5a5a5a;text-align:center;margin-top:8px}
+.btn{height:56px;border-radius:16px;border:0;font-weight:900;width:100%;cursor:pointer;font-family:system-ui,-apple-system,'Segoe UI',Tahoma,Arial,sans-serif;font-size:15px;transition:.2s}
+.btn:active{transform:scale(.97)}
+.bw{background:#EDE9D6;color:#060608}
+.bo{background:#18181e;color:#7a7a82;border:1px solid #26262e}
+.inp{width:100%;height:52px;background:#0c0c10;border:1.5px solid #24242e;border-radius:14px;color:#fff;padding:0 16px;outline:none;font-family:system-ui,-apple-system,'Segoe UI',Tahoma,Arial,sans-serif;font-size:14px;transition:.2s}
+.inp:focus{border-color:#8a9a5b;background:#101015}
+.xp{height:10px;background:#15151b;border-radius:99px;overflow:hidden;border:1px solid #1e1e26}
+.xpf{height:100%;background:linear-gradient(90deg,#8a9a5b,#a8bb75);transition:.7s cubic-bezier(.2,.8,.2,1)}
+.ch{margin-top:14px;border-radius:20px;padding:16px;border:1px solid #1e1e26;background:#121216}
+.ch.new{animation:pop .7s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{0%{transform:translateY(40px) scale(.88);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
+.day{width:40px;height:40px;border-radius:12px;border:1px solid #2a2a32;background:#0e0e11;display:grid;place-items:center;font-size:13px;cursor:pointer;font-weight:700}
+.day.on{background:#8a9a5b;color:#000;border-color:#8a9a5b}
+canvas{display:none}
+.charBox{width:70px;height:70px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#1e1e26,#0e0e11);border:1.5px solid #2a2a32;display:grid;place-items:center;position:relative;overflow:hidden}
+.charBox::after{content:'';position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 20px rgba(138,154,91,.15)}
+</style>
+</head>
+<body>
+
+<!-- شاشة البداية -->
+<div id="s0" class="scr on">
+<div style="margin-top:28%">
+<div class="logo">MD<span style="color:#8a9a5b">JAH</span>DON</div>
+<div class="sublogo">100 CHALLENGES • BECOME A REAL MAN • النسخة القاسية</div>
+<div style="display:flex;justify-content:center;margin-top:18px;gap:8px"><div style="width:6px;height:6px;border-radius:50%;background:#8a9a5b"></div><div style="width:6px;height:6px;border-radius:50%;background:#23232b"></div><div style="width:6px;height:6px;border-radius:50%;background:#23232b"></div></div>
+</div>
+<div style="flex:1"></div>
+<div class="c" style="text-align:center;font-size:11px;color:#6a6a72;line-height:1.7">نسخة أوفلاين • ملف واحد • يحفظ تقدمك تلقائيا<br>لا تحتاج إلى الإنترنت بعد التحميل</div>
+<div style="height:12px"></div>
+<button class="btn bw" onclick="go('s1')">ابدأ رحلتك • START YOUR JOURNEY →</button>
+<div style="height:18px"></div>
+</div>
+
+<!-- مقدمة 1 مع الاسم -->
+<div id="s1" class="scr">
+<div class="c" style="margin-top:16%">
+<div style="font-weight:900;font-size:22px">السلام عليكم</div>
+<div style="width:40px;height:3px;background:#8a9a5b;border-radius:99px;margin:10px 0"></div>
+<div style="color:#b5b3a8;font-size:14px;line-height:1.9">انت الآن على وشك خوض طريقك للتحول إلى رجل حقيقي والخروج من طبيعة الحياة الحالية والمقرفة.</div>
+<div style="color:#5a5a5a;font-size:11px;line-height:1.6;margin-top:10px">You are about to walk the path to become a real man and leave this disgusting modern life behind.</div>
+<div style="margin-top:18px">
+<div style="font-size:11px;color:#8a9a5b;font-weight:800;margin-bottom:8px">ما اسمك يا مجاهد؟</div>
+<input id="nameIn" class="inp" placeholder="اكتب اسمك الكامل هنا...">
+<div style="font-size:10px;color:#555;margin-top:8px">⚠️ الاسم سيظهر في الشهادات الرسمية ولا يمكن تغييره لاحقا. اكتب اسمك الحقيقي.</div>
+</div>
+</div>
+<div style="flex:1"></div>
+<button id="b1" class="btn bw" disabled style="opacity:.2" onclick="go('s2')">حسنا، أنا مستعد • OK I'M READY</button>
+<div style="height:8px"></div>
+</div>
+
+<!-- مقدمة 2 -->
+<div id="s2" class="scr">
+<div class="c" style="margin-top:20%">
+<div style="font-weight:900;font-size:22px">لكن...</div>
+<div style="width:40px;height:3px;background:#8a9a5b;border-radius:99px;margin:10px 0"></div>
+<div style="color:#b5b3a8;font-size:14px;line-height:1.9">لتحقيق هذا يجب ان تصبر، تنضبط، تضحي... لقد وصلت الى نقطة اللاعودة. لا مجال للرجوع، اما ان تصبح رجلا او تبقى ضعيفا للأبد.</div>
+<div style="color:#5a5a5a;font-size:11px;margin-top:10px">To achieve this you must be patient, disciplined, sacrifice... You reached the point of no return.</div>
+</div>
+<div style="flex:1"></div>
+<button class="btn bw" onclick="go('s3')">فهمت، سأضحي • I UNDERSTAND</button>
+</div>
+
+<!-- مقدمة 3 -->
+<div id="s3" class="scr">
+<div class="c" style="margin-top:20%">
+<div style="font-weight:900;font-size:22px;color:#ff5b5b">لا تكذب على نفسك</div>
+<div style="width:40px;height:3px;background:#ff5b5b;border-radius:99px;margin:10px 0"></div>
+<div style="color:#b5b3a8;font-size:14px;line-height:1.9">كن صادقا. كل ضغطة "تم" كاذبة ستدمرك انت فقط. الله يراك وانت ترى نفسك في المرآة كل صباح. اذا كذبت هنا ستكذب في كل حياتك.</div>
+<div style="color:#5a5a5a;font-size:11px;margin-top:10px">Don't lie to yourself. Every fake completion destroys only you. Allah sees you.</div>
+</div>
+<div style="flex:1"></div>
+<button class="btn bw" onclick="go('sConsent')" style="background:#ff5b5b;color:#fff">أقسم أني صادق • I SWEAR TO BE HONEST</button>
+</div>
+
+<!-- إخلاء المسؤولية والموافقة -->
+<div id="sConsent" class="scr">
+<div class="c" style="margin-top:6%">
+<div style="font-weight:900;font-size:20px;color:#ff5b5b">قبل ما تبدأ - إخلاء مسؤولية</div>
+<div style="width:40px;height:3px;background:#ff5b5b;border-radius:99px;margin:10px 0"></div>
+<div style="color:#b5b3a8;font-size:12.5px;line-height:1.9">
+هذا التطبيق يحتوي تحديات بدنية ونفسية قاسية (جري لمسافات طويلة، صيام، استحمام بماء بارد، مبيت في الطبيعة، إشعال نار، صناعة أدوات حادة، وغيرها). كل تحدٍ تنفذه هو على مسؤوليتك الشخصية الكاملة. صاحب التطبيق لا يتحمل أي مسؤولية عن إصابة أو ضرر جسدي أو نفسي أو مادي ينتج عن استخدامه.
+</div>
+</div>
+<div class="c" style="margin-top:14px">
+<div style="font-size:12px;font-weight:800;color:#ff5b5b;margin-bottom:10px">⚠️ حالات خاصة - استشر طبيبا قبل المتابعة إذا كان عندك:</div>
+<div style="color:#b5b3a8;font-size:12px;line-height:2">
+• أمراض قلب أو ضغط دم مرتفع/منخفض<br>
+• مشاكل تنفسية (ربو وغيره)<br>
+• أمراض مزمنة (سكري وغيره) خصوصا مع الصيام والجهد البدني<br>
+• إصابة أو عملية جراحية حديثة<br>
+• حمل<br>
+• اضطرابات نفسية أو اكتئاب/قلق حاد، أو أي تاريخ مع الأفكار الانتحارية أو إيذاء النفس<br>
+• أي حالة صحية أخرى تتعارض مع الصيام أو الجري أو التمارين المكثفة أو العزلة الممتدة
+</div>
+<div style="color:#6a6a72;font-size:11px;margin-top:10px;line-height:1.7">هذا التطبيق ليس بديلا عن استشارة طبية أو نفسية. إذا شعرت بألم حاد، دوار، ضيق تنفس، أو أي عرض خطير أثناء تحدٍ، توقف فورا واطلب المساعدة الطبية.</div>
+</div>
+<div style="flex:1"></div>
+<label style="display:flex;gap:10px;align-items:flex-start;background:#0c0c10;padding:12px;border-radius:12px;border:1px solid #1e1e26;margin-bottom:10px">
+<input type="checkbox" id="agreeConsent" style="width:18px;height:18px;margin-top:2px">
+<span style="font-size:11.5px;color:#b5b3a8;line-height:1.7">قرأت هذا التحذير، وأتحمل المسؤولية الكاملة عن قراري بتنفيذ هذه التحديات، وأتعهد أني سأستشير طبيبا إذا كانت عندي أي حالة من الحالات المذكورة أعلاه.</span>
+</label>
+<button id="bConsent" class="btn bw" disabled style="opacity:.2" onclick="go('s4')">وافقت، أتحمل المسؤولية • I ACCEPT</button>
+<div style="height:8px"></div>
+</div>
+
+<!-- التحدي 0 -->
+<div id="s4" class="scr">
+<div style="margin-top:8%">
+<div style="display:flex;align-items:center;gap:10px"><div style="background:#8a9a5b;color:#000;font-weight:900;border-radius:8px;padding:2px 8px;font-size:12px">0</div><div style="font-weight:900;font-size:20px">التحدي رقم 0 - التطهير</div></div>
+<div style="color:#6a6a72;font-size:11px;margin-top:6px">قبل ان تبدأ رحلتك يجب ان تصبح شخصا على الأقل نظيفا وطاهرا</div>
+</div>
+<div class="c" style="margin-top:16px">
+<div style="font-size:12px;font-weight:800;color:#8a9a5b;margin-bottom:12px">قبل ان تبدأ رحلتك يجب ان تصبح شخصا على الأقل:</div>
+<label style="display:flex;gap:12px;margin-top:14px;background:#0c0c10;padding:12px;border-radius:12px;border:1px solid #1e1e26"><input type="checkbox" class="c0" style="width:18px;height:18px"> <div><b style="font-size:13px">A. اغتسل وقم بحمام</b><div style="font-size:11px;color:#777;margin-top:2px">حمام كامل بماء بارد 3 دقائق، نظف جسمك جيدا</div></div></label>
+<label style="display:flex;gap:12px;margin-top:10px;background:#0c0c10;padding:12px;border-radius:12px;border:1px solid #1e1e26"><input type="checkbox" class="c0" style="width:18px;height:18px"> <div><b style="font-size:13px">B. صلي ركعتين بنية التوبة</b><div style="font-size:11px;color:#777;margin-top:2px">صلي ركعتين واطلب التوفيق من الله بصدق</div></div></label>
+<label style="display:flex;gap:12px;margin-top:10px;background:#0c0c10;padding:12px;border-radius:12px;border:1px solid #1e1e26"><input type="checkbox" class="c0" style="width:18px;height:18px"> <div><b style="font-size:13px">D. ادعو الله ان يوفقك</b><div style="font-size:11px;color:#777;margin-top:2px">60 ثانية دعاء صادق من قلبك ان يوفقك في هذه الرحلة</div></div></label>
+</div>
+<div style="flex:1"></div>
+<button id="b0" class="btn bw" disabled style="opacity:.2" onclick="startMain()">تمام انا جاهز • I'M READY TO BECOME A MAN</button>
+<div style="height:8px"></div>
+</div>
+
+<!-- الرئيسية -->
+<div id="main" class="scr" style="padding:0">
+<div style="position:sticky;top:0;z-index:20;background:rgba(6,6,8,.96);backdrop-filter:blur(12px);padding:14px 14px 12px;border-bottom:1px solid #15151b">
+<div style="display:flex;gap:12px;align-items:center">
+<div id="av" class="charBox" style="font-size:30px">🥀</div>
+<div style="flex:1">
+<div style="display:flex;justify-content:space-between;align-items:center"><b id="lv" style="font-size:13px">LVL 0 • ضعيف • WEAK</b><span id="xpT" style="font-size:10px;color:#8a9a5b;background:#141a0e;padding:3px 8px;border-radius:99px;border:1px solid #232e18">0 XP</span></div>
+<div class="xp" style="margin-top:8px"><div id="xpF" class="xpf" style="width:2%"></div></div>
+<div style="display:flex;justify-content:space-between;margin-top:6px"><span id="nm" style="font-size:11px;color:#5a5a5a"></span><span id="progTxt" style="font-size:10px;color:#555">0 / 100</span></div>
+</div>
+</div>
+</div>
+<div id="list" style="padding:14px 14px 100px"></div>
+</div>
+
+<div id="certM" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:60;place-items:center;padding:16px"><div class="c" style="max-width:380px;width:100%;text-align:center"><div style="font-size:28px">🏆</div><div id="ct" style="font-weight:900;font-size:20px;margin-top:8px"></div><div id="cb" style="font-size:11px;color:#888;margin-top:8px;line-height:1.7"></div><img id="ci" style="width:100%;border-radius:14px;margin-top:14px;border:1px solid #222"><button class="btn bw" style="margin-top:14px" onclick="dlCert()">تحميل الشهادة JPG • DOWNLOAD</button><button class="btn bo" style="margin-top:8px" onclick="document.getElementById('certM').style.display='none'">متابعة الرحلة • CONTINUE</button></div></div>
+<canvas id="can" width="1080" height="1350"></canvas>
+
+<script>
+let S=JSON.parse(localStorage.getItem('MDJ_FINAL')||'{"done":[],"h":{},"l":{},"xp":0,"name":"","cur":0}');
+let challenges=[
+{n:1,t:"التوقف عن العادة السرية - 10 أيام",d:"أهم تحدي في الرحلة كلها. ستستعيد طاقتك، تركيزك، هرموناتك، ورجولتك. اذا سقطت، لا تكذب على نفسك - عاقب نفسك بخسارة يوم واحد وكمل، الرجل الحقيقي يقع ويقوم.",type:'habit',days:10,xp:200,note:"ملاحظة هامة: التزم بهذه العادة دائما بعد الانتهاء. تم وضع الأجل فقط للتقدم في الخارطة. اذا سقطت يوما، تخسر يوما من رصيدك كعقوبة ولا ترجع للصفر - الاستسلام هو الفشل الحقيقي، ماشي السقوط."},
+{n:2,t:"الاستيقاظ للفجر وصلاته في المسجد - 14 يوم",d:"بدون غفوة. استيقظ قبل الأذان، اغسل وجهك بماء بارد، وصلي الفجر في المسجد كل يوم بلا استثناء 14 يوما متتالية.",type:'habit',days:14,xp:220,note:"التزم بهذه العادة دائما بعد الانتهاء - الفجر في المسجد جذر الانضباط. اذا فشلت، تخسر يوما من رصيدك كعقوبة."},
+{n:3,t:"100 ضغط صدر كل يوم - 30 يوم",d:"مقسمة: 20 صباحا، 20 ظهرا، 20 عصرا، 20 مغربا، 20 قبل النوم. لا عذر نهائيا.",type:'habit',days:30,xp:350,note:"اذا لم تقم بشكل متواصل، تخسر يوما من رصيدك كعقوبة. التزم بهذه العادة دائما - رجل حقيقي لا يتوقف مهما سقط."},
+{n:4,t:"المشي 5 كلم في الطبيعة بدون هاتف",d:"اخرج خارج مدينتك، بدون سماعات، بدون هاتف. امشي وحدك ساعتين وفكر في حياتك ومستقبلك.",type:'direct',xp:90},
+{n:5,t:"عدم تناول السكر الأبيض - 14 يوم",d:"لا حلويات، لا مشروبات غازية، لا سكر في القهوة والشاي. اقرأ المكونات في كل شيء.",type:'habit',days:14,xp:180,note:"التزم بهذه العادة دائما. السكر يدمر رجولتك."},
+{n:6,t:"تعلم 3 عقد حبال تنقذ حياتك",d:"عقد يستعملها الجيش والإنقاذ: Bowline - Clove Hitch - Figure 8",type:'learn',subs:["شاهد فيديو يوتيوب لكل عقدة 10د (ابحث: knots)","طبق كل عقدة 5 مرات بيدك حتى تحفظها","اربط شيئا ثقيلا واختبر قوتها","علم شخص آخر عقدة واحدة على الأقل"],xp:110},
+{n:7,t:"التقليل من الهاتف لأقل من 2 ساعة - 7 أيام",d:"احذف تيك توك، انستا، سناب لمدة اسبوع. اترك الهاتف بعيدا عن غرفة النوم. استعمل تطبيق Digital Wellbeing للمراقبة.",type:'habit',days:7,xp:150,note:"التزم بهذه العادة دائما. الهاتف يسرق رجولتك."},
+{n:8,t:"قراءة كتاب رجولي 100 صفحة",d:"اختر كتابا واحدا: فن الحرب - الرجال من المريخ - كتاب ديني - لا روايات حب فارغة.",type:'learn',subs:["اختر الكتاب وحمله او اشتريه","اقرأ 30 صفحة بتركيز","اقرأ 70 صفحة المتبقية","لخص 5 فوائد تعلمتها في ورقة"],xp:120},
+{n:9,t:"صيام الاثنين والخميس - أسبوعين",d:"صم 4 أيام متفرقة. درب إرادتك وجوعك. لا تقل ل أحد انك صائم.",type:'habit',days:4,xp:100},
+{n:10,t:"تنظيف غرفتك وملابسك كاملة كجندي",d:"اغسل كل ملابسك، رتب سريرك، تخلص من القمامة، نظف تحت السرير. صور قبل وبعد في عقلك.",type:'direct',xp:80},
+{n:11,t:"تعلم أصل اللغات والحروف القديمة",d:"من أين جاءت الحروف العربية والفينيقية؟ كيف تطورت؟",type:'learn',subs:["ابحث 30 دقيقة عن أصل الحروف الفينيقية والعربية","اكتب 10 حروف قديمة بيدك في ورقة","اشرح لشخص واحد ما تعلمته"],xp:85},
+{n:12,t:"الاستحمام بماء بارد فقط - 7 أيام",d:"لا ماء ساخن نهائيا. 2 دقيقة كاملة تحت الماء البارد. ستزيد هرموناتك.",type:'habit',days:7,xp:130,note:"التزم بهذه العادة دائما."},
+{n:13,t:"التوقف عن الشكوى والكلام الفارغ - 7 أيام",d:"لا تشتكي، لا تسب، لا تتكلم عن الناس. اذا تكلمت، تخسر يوما من رصيدك كعقوبة.",type:'habit',days:7,xp:140,note:"اذا فشلت، تخسر يوما من رصيدك كعقوبة. التزم دائما - الرجل يتحكم في لسانه."},
+{n:14,t:"تعلم الإسعافات الأولية - وقف النزيف",d:"مهارة تنقذ حياة انسان. يجب على كل رجل معرفتها.",type:'learn',subs:["شاهد فيديو وقف النزيف والضغط على الجرح 15د","شاهد فيديو وضعية الإفاقة الجانبية","طبق على وسادة او دمية","احفظ رقم الحماية المدنية 14 والاسعاف"],xp:100},
+{n:15,t:"جري 3 كلم بدون توقف",d:"اخرج الآن واجري 3 كلم. لا تمشي. اذا توقفت اعد من البداية. سجل وقتك.",type:'direct',xp:85},
+{n:16,t:"لا قهوة ولا شاي بعد 4 مساء - 10 أيام",d:"لتحسين نومك وقلقك. اشرب ماء فقط بعد 4.",type:'habit',days:10,xp:110,note:"التزم بهذه العادة دائما."},
+{n:17,t:"تعلم عمل Handstand - الوقوف على اليدين",d:"مهارة قوة وتوازن خارقة",type:'learn',subs:["شاهد تكنيك Handstand للمبتدئين 10د","تمرن 5 دقائق كل يوم ضد الحائط لمدة 3 أيام","محاولة بدون حائط 10 ثواني","سأحرص على التطور واحترافها"],xp:130},
+{n:18,t:"كتابة أهدافك لـ 5 سنوات في ورقة",d:"اكتب في ورقة كبيرة: أين تريد ان تكون بعد 5 سنوات؟ مال، جسم، دين، زواج، بيت. علقها في الحائط امام سريرك.",type:'direct',xp:75},
+{n:19,t:"التوقف عن الإباحية - 21 يوم",d:"هذا يدمر دماغك ودوبامينك. احذف كل شيء. اذا فشلت، تخسر يوما من رصيدك كعقوبة ولا تكذب على نفسك.",type:'habit',days:21,xp:280,note:"التزم بهذه العادة دائما. اذا فشلت، تخسر يوما من رصيدك كعقوبة - كمل ولا تستسلم."},
+{n:20,t:"تعلم الطبخ - اطبخ 3 وجبات صحية بنفسك",d:"بيض، شكشوكة، دجاج وخضار. لا تطلب من أمك او زوجتك. اعتمد على نفسك.",type:'learn',subs:["اطبخ وجبة 1 صحية وصورها","اطبخ وجبة 2","اطبخ وجبة 3 ونظف المطبخ كاملا بعده"],xp:90},
+{n:21,t:"المشي حافي على التراب 20 دقيقة",d:"اخرج للطبيعة، امشي حافي على التراب او الرمل. تأمل واذكر الله.",type:'direct',xp:70},
+{n:22,t:"100 سكوات (قرفصاء) كل يوم - 14 يوم",d:"أرجل حديدية. 100 كل يوم مقسمة.",type:'habit',days:14,xp:170,note:"اذا لم تقم بشكل متواصل، تخسر يوما من رصيدك كعقوبة. التزم دائما."},
+{n:23,t:"تعلم النجوم والاتجاهات بدون بوصلة",d:"كيف تعرف الشمال بالنجوم والشمس؟ مهارة بقاء",type:'learn',subs:["ابحث عن النجم القطبي وكيفية ايجاده 15د","تعلم تحديد الشمال بالشمس والساعة","جرب في الليل وحدد الشمال"],xp:80},
+{n:24,t:"لا كذب لمدة 7 أيام",d:"لا تكذب نهائيا، حتى كذبة بيضاء صغيرة. اذا كذبت، تخسر يوما من رصيدك كعقوبة.",type:'habit',days:7,xp:150,note:"التزم بهذه العادة دائما. اذا فشلت، تخسر يوما من رصيدك كعقوبة."},
+{n:25,t:"حفظ 20 كلمة انجليزية رجولية + استعمالها",d:"Discipline, Honor, Sacrifice, Patience, Courage, Loyalty...",type:'learn',subs:["احفظ 10 كلمات مع معناها","احفظ 10 أخرى","استعملها في 3 جمل مفيدة"],xp:65},
+// انتهى الجزء 1 - 25 تحدي كامل بكل التفاصيل
+{n:26,t:"الاستيقاظ بدون منبه - 3 أيام",d:"اضبط نومك ونم باكرا واستيقظ بدون منبه على الفجر. درب ساعتك البيولوجية.",type:'habit',days:3,xp:90},
+{n:27,t:"تعلم تصليح عجلة دراجة / سيارة",d:"مهارة كل رجل يجب ان يعرفها.",type:'learn',subs:["شاهد فيديو تصليح بنشر 15د","جرب فك العجلة وتركيبها","تعلم استعمال المرفاع والادوات"],xp:95},
+{n:28,t:"التوقف عن الأكل بعد 8 مساء - 10 أيام",d:"لا أكل بعد 8. ماء فقط. ستنحف وستنام احسن.",type:'habit',days:10,xp:125,note:"التزم بهذه العادة دائما."},
+{n:29,t:"حفظ 5 أحاديث نبوية قصيرة",d:"احفظها بمعناها وطبقها.",type:'learn',subs:["احفظ حديثين","احفظ 3 احاديث اخرى","اشرح حديث لشخص"],xp:80},
+{n:30,t:"جري 5 كلم بدون توقف",d:"الآن مستواك ارتفع. 5 كلم كاملة. لا تمشي.",type:'direct',xp:110},
+{n:31,t:"لا شتم ولا سب - 14 يوم",d:"نظف لسانك. اذا سبيت، تخسر يوما من رصيدك كعقوبة.",type:'habit',days:14,xp:180,note:"اذا فشلت، تخسر يوما من رصيدك كعقوبة. التزم دائما."},
+{n:32,t:"الوصول إلى 20 عقلة صحيحة",d:"بدون وقت محدد. تدرب حتى تصل لـ20 عقلة كاملة صحيحة، ماشي حركة جسد للوصول للرقم.",type:'learn',subs:["تعلم الشكل الصحيح (مدى كامل، بلا تذبذب)","اصل لـ10 عقلات صحيحة متتالية","اصل لـ15 عقلة صحيحة متتالية","اصل لـ20 عقلة صحيحة متتالية"],xp:200},
+{n:33,t:"قضاء يوم كامل بدون كهرباء وشاشات",d:"من الفجر للمغرب بدون هاتف، تلفاز، انترنت. اقرأ، اخرج، فكر.",type:'direct',xp:95},
+{n:34,t:"تعلم لغة جديدة - 50 كلمة",d:"اختر لغة مفيدة: انجليزية، تركية، اسبانية.",type:'learn',subs:["اختر اللغة وحمل تطبيق","احفظ 20 كلمة","احفظ 30 كلمة اخرى","تحدث بجملة من 5 كلمات"],xp:100},
+{n:35,t:"التوقف عن المشروبات الغازية - 30 يوم",d:"30 يوم بدون كوكا، حمود، بيبسي. ماء فقط.",type:'habit',days:30,xp:250,note:"التزم بهذه العادة دائما."},
+{n:36,t:"بناء طاولة صغيرة او رف خشب",d:"اشتري خشب ومسامير وابني شيئا بيدك.",type:'learn',subs:["ارسم التصميم على ورقة","اشتري الخشب والادوات","ابنيها","استعملها"],xp:115},
+{n:37,t:"المشي 10 كلم في الجبل",d:"اخرج للجبل، 10 كلم ذهاب واياب. خذ ماء فقط. إذا ماكانش عندك جبل قريب، امشي 10 كلم في أطراف المدينة او منطقة ريفية قريبة.",type:'direct',xp:120},
+{n:38,t:"لا غيبة ولا نميمة - 10 أيام",d:"لا تتكلم عن أحد في غيابه. اذا فعلت، تخسر يوما من رصيدك كعقوبة.",type:'habit',days:10,xp:160,note:"التزم دائما. اذا فشلت، تخسر يوما من رصيدك كعقوبة."},
+{n:39,t:"تعلم الخط العربي - اكتب اسمك بخط جميل",d:"مهارة رجولية منسية.",type:'learn',subs:["شاهد فيديو خط عربي 10د","تمرن كتابة الحروف 30د","اكتب اسمك بلوحة جميلة"],xp:75},
+{n:40,t:"100 بطن كل يوم - 20 يوم",d:"معدة حديدية.",type:'habit',days:20,xp:220,note:"اذا لم تقم بشكل متواصل، تخسر يوما من رصيدك كعقوبة. التزم دائما."},
+{n:41,t:"حفظ سورة الملك",d:"المنجية من عذاب القبر. احفظها.",type:'learn',subs:["احفظ 10 آيات","احفظ 10 آيات اخرى","احفظ الباقي","راجعها كاملة"],xp:150},
+{n:42,t:"التوقف عن الأكل السريع Junk Food - 21 يوم",d:"لا مقلي، لا بيتزا شارع، لا شاورما. اكل بيت فقط.",type:'habit',days:21,xp:200,note:"التزم بهذه العادة دائما."},
+{n:43,t:"إشعال نار بدون ولاعة",d:"مهارة بقاء حقيقية. مكان مسموح وآمن فقط.",type:'learn',subs:["تعلم طريقتين مختلفتين لإشعال النار بدون ولاعة","جهز الوقود (حطب جاف + إشعال أولي)","اشعلها بإحدى الطريقتين وحافظ عليها مشتعلة","أطفئها بالكامل، تأكد ما بقى جمر"],xp:100},
+{n:44,t:"القيام بـ 50 ضغط دفعة واحدة",d:"بدون توقف. اذا فشلت تدرب 3 أيام ثم عد.",type:'direct',xp:100},
+{n:45,t:"كتابة رسالة اعتذار لشخص ظلمته",d:"اكتب رسالة صادقة واعتذر. كن رجلا.",type:'direct',xp:85},
+{n:46,t:"لا سهر بعد 11 ليلا - 14 يوم",d:"نم باكرا. السهر يدمر هرموناتك.",type:'habit',days:14,xp:165,note:"التزم بهذه العادة دائما."},
+{n:47,t:"تعلم انواع العقد النفسية وكيف تتخلص منها",d:"اقرأ عن عقد الطفولة والخوف.",type:'learn',subs:["ابحث 30د عن العقد النفسية","اكتب 3 عقد عندك","اكتب حل لكل عقدة"],xp:90},
+{n:48,t:"المشي والجري حافيا على سطح طبيعي",d:"امشي حافيا 500م على سطح آمن (رمل/عشب/تراب ناعم) لتسخين قدمك، ثم اجري حافيا مسافة قصيرة تناسب قدرتك. توقف فورا عند أي ألم حاد.",type:'direct',xp:80},
+{n:49,t:"التوقف عن مقارنة نفسك بالآخرين - 10 أيام",d:"لا تقارن. ركز على نفسك فقط. اذا قارنت، تخسر يوما من رصيدك كعقوبة.",type:'habit',days:10,xp:130,note:"التزم دائما."},
+{n:50,t:"تعلم تغيير زيت السيارة وفلتر",d:"كل رجل يجب ان يعرف.",type:'learn',subs:["شاهد فيديو تغيير زيت 15د","تعرف على الادوات","جرب بنفسك او مع ميكانيكي"],xp:95},
+{n:51,t:"صيام إسلامي 3 أيام متتالية",d:"الاثنين الثلاثاء الاربعاء. صيام من الفجر للمغرب، مع الالتزام بآداب الصيام والأخلاق والمعاملات.",type:'habit',days:3,xp:120},
+{n:52,t:"تقوية الرقبة - 7 أيام",d:"تمارين ثابتة (isometric): يدك تدفع رأسك بلا حركة، 4 اتجاهات، 10 ثواني كل جهة. بلا ضغط مفاجئ على الرأس.",type:'habit',days:7,xp:100},
+{n:53,t:"تعلم الصيد - صيد سمك او طير",d:"اخرج وتعلم الصبر. إذا ماكانش عندك مكان صيد قريب، تعلم النظرية والمعدات وشاهد شخصا يصيد او زر بحيرة/بركة قريبة.",type:'learn',subs:["تعلم اساسيات الصيد","اخرج للصيد 2 ساعة","نظف ما صدته بنفسك"],xp:105},
+{n:54,t:"لا تضيع وقتك في الجدال - 7 أيام",d:"اذا بدأ جدال انسحب. لا تجادل.",type:'habit',days:7,xp:110},
+{n:55,t:"حفظ 10 أسماء الله الحسنى بمعانيها",d:"احفظها وادعو بها.",type:'learn',subs:["احفظ 5 اسماء","احفظ 5 اخرى","ادعو بها في صلاتك"],xp:70},
+{n:56,t:"عمل 200 ضغط في يوم واحد",d:"مقسمة على اليوم كامل. تحدي قوة.",type:'direct',xp:115},
+{n:57,t:"التوقف عن سماع الموسيقى - 14 يوم",d:"استمع لقرآن او بودكاست مفيد فقط. نظف دماغك.",type:'habit',days:14,xp:170,note:"التزم بهذه العادة دائما."},
+{n:58,t:"تعلم خياطة زر واصلاح ملابسك",d:"خيط زر قميص بنفسك.",type:'learn',subs:["شاهد فيديو 5د","خيط زر","اصلح ثقب صغير"],xp:60},
+{n:59,t:"ليلة كاملة في الطبيعة بدون هاتف",d:"دبر مكان نومك، ماءك، طعامك، حمايتك من الجو، ونظافتك بنفسك. اترك المكان أنظف مما وجدته. إذا تعذرت الطبيعة، بت بنفس الشروط في الشرفة/السطح بلا فراش مريح.",type:'direct',xp:130},
+{n:60,t:"لا تلمس وجهك وشعرك كثيرا - 7 أيام",d:"عادة ضعف. توقف عنها.",type:'habit',days:7,xp:90},
+{n:61,t:"الدفاع عن النفس - الخروج من الخطر",d:"الهدف الخروج من الخطر، ماشي الدخول في قتال. تدرب مع شخص متعاون فعليا.",type:'learn',subs:["تعلم نظريا: الإفلات من مسكة + إبعاد الخصم","تدرب مع شخص متعاون على الإفلات من مسكة","تدرب معه على إبعاده وفتح مسافة","تدرب على الخروج من الموقف والابتعاد بسرعة"],xp:110},
+{n:62,t:"قراءة سيرة صحابي كاملة",d:"اختر صحابي: عمر، خالد، علي. اقرأ سيرته.",type:'learn',subs:["اختر الصحابي","اقرأ 50% من سيرته","اكملها ولخص 3 دروس"],xp:100},
+{n:63,t:"التوقف عن التدخين/الشيشة - 30 يوم",d:"اذا لا تدخن فتوقف عن شيء آخر سيء. اذا تدخن هذا هو وقتك.",type:'habit',days:30,xp:350,note:"التزم بهذه العادة دائما. اذا فشلت، تخسر يوما من رصيدك كعقوبة."},
+{n:64,t:"جري 10 كلم",d:"أكمل 10 كلم كاملة، Run/Walk مسموح، بلا وقت محدد، المهم إتمام المسافة.",type:'direct',xp:150},
+{n:65,t:"تعلم الاسعاف - انعاش قلبي رئوي CPR",d:"مهارة تنقذ حياة.",type:'learn',subs:["شاهد فيديو CPR 15د","طبق على وسادة 10د","علم شخص"],xp:100},
+{n:66,t:"لا تشاهد اخبار سلبية - 7 أيام",d:"لا اخبار، لا دراما. ركز على حياتك.",type:'habit',days:7,xp:90},
+{n:67,t:"بناء صندوق ادخار خشب ولا تلمسه 30 يوم",d:"اصنع حصالة ولا تفتحها 30 يوم.",type:'habit',days:30,xp:180,note:"التزم بهذه العادة دائما."},
+{n:68,t:"تعلم 5 نجوم وكيفية الملاحة بها",d:"الدب الأكبر، الصغرى، الجبار...",type:'learn',subs:["ابحث عن 5 كوكبات","اخرج ليلا وحاول ايجادها","صورها او ارسمها"],xp:85},
+{n:69,t:"الاستيقاظ قبل الفجر بساعة - 7 أيام",d:"استيقظ، صلي قيام ليل، اقرأ قرآن.",type:'habit',days:7,xp:140,note:"التزم بهذه العادة دائما."},
+{n:70,t:"مساعدة شخص غريب بدون مقابل",d:"ساعد عجوز، احمل اثقال، نظف مسجد. لا تخبر أحد.",type:'direct',xp:80},
+// انتهى الجزء 2 - 45 تحدي
+{n:71,t:"حفظ جزء عم كامل",d:"من الناس الى النبأ. تحدي ديني عظيم.",type:'learn',subs:["احفظ 5 سور قصيرة","احفظ 5 سور اخرى","احفظ 10 سور متوسطة","راجع الجزء كاملا"],xp:200},
+{n:72,t:"التوقف عن الأكل بشراهة - كل ببطء 14 يوم",d:"كل ببطء، امضغ 20 مرة. لا تملأ بطنك.",type:'habit',days:14,xp:140,note:"التزم بهذه العادة دائما."},
+{n:73,t:"صناعة سكين بيدك",d:"اصنع سكينا بسيطا بنفسك ثم استعمله في مهمة حقيقية. احترس من الحواف الحادة.",type:'learn',subs:["ابحث عن طريقة صنع سكين بسيط وجهز المواد","اصنع السكين بيدك","اشحذه حتى يقطع فعليا","استعمله في مهمة حقيقية ومفيدة"],xp:120},
+{n:74,t:"جري 15 كلم",d:"أكمل 15 كلم كاملة، Run/Walk مسموح، بلا وقت محدد، المهم إتمام المسافة.",type:'direct',xp:200},
+{n:75,t:"لا تضيع وقت في العاب الفيديو - 21 يوم",d:"21 يوم بدون العاب. استثمر وقتك.",type:'habit',days:21,xp:210,note:"التزم بهذه العادة دائما."},
+{n:76,t:"تعلم لغة الاشارة - 20 جملة",d:"مهارة انسانية عظيمة.",type:'learn',subs:["تعلم الحروف","تعلم 10 جمل","تحدث مع شخص"],xp:85},
+{n:77,t:"بناء مأوى حقيقي في الطبيعة",d:"مأوى فعلي يحميك من الريح/المطر، ماشي تجميع أغصان عشوائي. بلا إتلاف غير ضروري للمكان. إذا تعذرت الطبيعة، جربه بمواد بسيطة في الشرفة/السطح.",type:'direct',xp:125},
+{n:78,t:"التوقف عن السهر بعد 10:30 - 21 يوم",d:"نم باكرا 21 يوم. ستصبح وحشا.",type:'habit',days:21,xp:220,note:"التزم بهذه العادة دائما."},
+{n:79,t:"تعلم الكتابة السريعة على الكيبورد",d:"تعلم تكتب بدون النظر.",type:'learn',subs:["اختبر سرعتك الحالية","تمرن 20د يوميا لمدة 3 ايام","اختبر سرعتك مجددا"],xp:75},
+{n:80,t:"1000 ضغط في 7 أيام",d:"1000 ضغط توزعها بنفسك على 7 أيام، سجل عددك كل يوم، المهم اكمال 1000 خلال الأيام السبعة.",type:'habit',days:7,xp:250,note:"اذا لم تقم بشكل متواصل، تخسر يوما من رصيدك كعقوبة."},
+{n:81,t:"حفظ خريطة العالم والدول",d:"احفظ 30 دولة وعاصمتها.",type:'learn',subs:["احفظ 10 دول","احفظ 10 اخرى","احفظ 10 اخيرة"],xp:90},
+{n:82,t:"لا تطلب شيئا من أحد - 7 أيام",d:"اعتمد على نفسك فقط 7 أيام. لا تطلب مساعدة.",type:'habit',days:7,xp:120},
+{n:83,t:"السباحة 1 كلم",d:"إذا لا تعرف السباحة، تعلمها من الصفر وتدرج حتى الوصول لـ1 كلم في مكان آمن (مسبح مثلا).",type:'learn',subs:["تعلم الأساسيات: تنفس، طفو، حركة أرجل","سبح 100م متواصلة","سبح 500م متواصلة","سبح 1 كلم متواصلة"],xp:130},
+{n:84,t:"قراءة كتاب عن المال والاستثمار",d:"الأب الغني الأب الفقير او كتاب مشابه.",type:'learn',subs:["اقرأ 30 صفحة","اقرأ 70 صفحة","لخص 5 قواعد مال"],xp:110},
+{n:85,t:"التوقف عن القهوة - 14 يوم",d:"14 يوم بدون قهوة. واجه الصداع واصبر.",type:'habit',days:14,xp:180,note:"التزم بهذه العادة دائما بعدها قلل."},
+{n:86,t:"تعلم تغيير اطار السيارة في 10 دقائق",d:"تدرب حتى تتقنها بسرعة.",type:'learn',subs:["شاهد فيديو 10د","جرب فك وتركيب بوقت","حاول في اقل من 10د"],xp:95},
+{n:87,t:"المشي 20 كلم في يوم واحد",d:"بلا سيارة ولا أي وسيلة نقل تكمل بيها المسافة. التوقف للراحة والأكل والماء مسموح.",type:'direct',xp:180},
+{n:88,t:"لا غضب - 14 يوم",d:"لا تغضب نهائيا 14 يوم. اذا غضبت، تخسر يوما من رصيدك كعقوبة. تحكم في نفسك.",type:'habit',days:14,xp:200,note:"التزم دائما. اذا فشلت، تخسر يوما من رصيدك كعقوبة."},
+{n:89,t:"تعلم البرمجة - اساسيات HTML",d:"ابني صفحة ويب بسيطة.",type:'learn',subs:["تعلم اساسيات HTML 30د","ابني صفحة تعريفية عن نفسك","ارفعها"],xp:90},
+{n:90,t:"200 سكوات في يوم واحد",d:"200 قرفصاء في نفس اليوم، مقسمة كيفما تحب، لكن بنزول كامل وطريقة صحيحة.",type:'direct',xp:120},
+{n:91,t:"حفظ 40 حديث من الأربعين النووية",d:"احفظها كاملة، الأربعين حرفيا.",type:'learn',subs:["احفظ 10 احاديث","احفظ 10 اخرى","احفظ 10 اخرى","احفظ 10 اخرى ومراجعة الأربعين كاملة"],xp:250},
+{n:92,t:"التوقف عن الكلام السلبي عن نفسك - 21 يوم",d:"لا تقل انا فاشل، انا ضعيف. قل انا قوي. اذا قلت كلاما سلبيا، تخسر يوما من رصيدك كعقوبة.",type:'habit',days:21,xp:230,note:"التزم دائما."},
+{n:93,t:"تعلم صيد السمك بشبكة",d:"اصنع شبكة صغيرة وصيد. إذا ماكانش عندك ماء صالح للصيد، اصنع الشبكة وتعلم التقنية وطبقها فأقرب فرصة متاحة.",type:'direct',xp:100},
+{n:94,t:"نصف ماراثون - 21.1 كلم",d:"أكمل 21.1 كلم فعليا، Run/Walk مسموح، بلا وقت محدد، المهم إتمام المسافة كاملة.",type:'direct',xp:300},
+{n:95,t:"علّم شخصا مهارة كاملة",d:"اختر مهارة تعلمتها في رحلتك وعلمها لشخص آخر من الصفر حتى ينجزها بنفسه بلا مساعدة مباشرة. القيادة تبدأ بإخراج الأفضل من غيرك.",type:'direct',xp:200},
+{n:96,t:"تعلم النجارة - اصنع كرسي",d:"اصنع كرسي خشب بسيط بيدك.",type:'learn',subs:["ارسم التصميم","اشتري الخشب","ابني الكرسي","اجلس عليه"],xp:140},
+{n:97,t:"أسبوع سيطرة كاملة - 7 أيام",d:"لا سكر مضاف، لا إباحية، لا ألعاب، هاتف محدود، لا سهر متعمد، لا شكوى، لا كذب. 7 أيام نظيفة 100%.",type:'habit',days:7,xp:300,note:"التزم بهذه العادة دائما. اذا فشلت في أي بند، تخسر يوما من رصيدك كعقوبة."},
+{n:98,t:"كتابة وصيتك واهدافك النهائية",d:"اكتب وصيتك وما تريد ان يذكرك الناس به.",type:'direct',xp:90},
+{n:99,t:"ليلتان في الطبيعة بدون هاتف",d:"دبر مأكلك ومشربك ومأواك ونظافتك بنفسك طوال التجربة. العزلة التامة غير شرط اذا كانت غير عملية، المهم الانضباط. إذا تعذرت الطبيعة، نفذها بنفس الجدية في الشرفة/السطح.",type:'direct',xp:250},
+{n:100,t:"يوم المجاهد - الخاتمة",d:"يوم واحد قاسي، تجمع فيه كل ما بنيته في رحلتك دفعة واحدة. نهاية الرحلة ماشي نهاية الانضباط - العادات التي بنيتها تكمل معك بعده.",type:'learn',subs:["صلاة الفجر في وقتها","300 Push-ups","300 Squats","جري 10 كلم","تعلم مهارة جديدة كاملة خلال اليوم","استعمل المهارة في مهمة حقيقية وأنتج نتيجة فعلية","ساعة كاملة بلا هاتف ولا ترفيه رقمي","اكتب سجلا قصيرا: ماذا أنجزت وماذا فشلت فيه"],xp:500}
+];
+let TOTAL_XP=challenges.reduce((s,c)=>s+c.xp,0);
+
+function go(id){document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');window.scrollTo(0,0)}
+document.getElementById('nameIn').addEventListener('input',e=>{let b=document.getElementById('b1');let v=e.target.value.trim();if(v.length>=2){b.disabled=false;b.style.opacity=1;S.name=v;}else{b.disabled=true;b.style.opacity=.2}});
+document.getElementById('agreeConsent').addEventListener('change',e=>{let b=document.getElementById('bConsent');if(e.target.checked){b.disabled=false;b.style.opacity=1}else{b.disabled=true;b.style.opacity=.2}});
+document.addEventListener('change',e=>{if(e.target.classList.contains('c0')){let c=document.querySelectorAll('.c0:checked').length;let b=document.getElementById('b0');if(c==3){b.disabled=false;b.style.opacity=1}else{b.disabled=true;b.style.opacity=.2}}});
+function startMain(){localStorage.setItem('MDJ_FINAL',JSON.stringify(S));go('main');render();}
+
+function charFor(x){
+if(x<200) return {e:'💀',l:'LVL 0 • ضعيف • WEAK',p:3,desc:'جسد متعب، عيون حمراء، منحني'};
+if(x<600) return {e:'🥀',l:'LVL 1 • مستيقظ • AWAKE',p:15,desc:'بدأت تستيقظ'};
+if(x<1200) return {e:'🧍',l:'LVL 2 • منضبط • DISCIPLINED',p:30,desc:'واقف، ثابت'};
+if(x<2200) return {e:'🧎‍♂️',l:'LVL 3 • قوي • STRONG',p:50,desc:'قوي، كتف عريض'};
+if(x<3500) return {e:'👨‍🦱',l:'LVL 4 • محارب • WARRIOR',p:70,desc:'محارب، لحية، نظرة حادة'};
+if(x<5000) return {e:'🦁',l:'LVL 5 • أسد • LION',p:88,desc:'أسد، هيبة'};
+return {e:'👑',l:'LVL 6 • مجاهد • MUJAHID',p:100,desc:'مجاهد، ملك نفسه'};
+}
+
+function render(){
+let ch=charFor(S.xp);
+document.getElementById('av').textContent=ch.e;
+document.getElementById('lv').textContent=ch.l;
+document.getElementById('xpT').textContent=S.xp+' XP • '+ch.desc;
+document.getElementById('xpF').style.width=ch.p+'%';
+document.getElementById('nm').textContent=S.name?`المجاهد: ${S.name} • ${S.done.length}/100`:'';
+document.getElementById('progTxt').textContent=`${S.done.length} / 100 تحدي`;
+let list=document.getElementById('list');list.innerHTML='';
+challenges.forEach(c=>{
+if(c.n>S.cur+1) return;
+let done=S.done.includes(c.n);
+let d=document.createElement('div');d.className='c ch'+(done?'':'')+(c.n==S.cur+1?' new':'');if(done)d.style.opacity='.55';
+let html=`<div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:13.5px">#${c.n} ${c.t}</b><span class="tag">+${c.xp} XP • ${c.type=='habit'?'عادة':c.type=='direct'?'ميداني':'مهارة'}</span></div><div style="font-size:11.5px;color:#8a8a94;margin-top:6px;line-height:1.6">${c.d}</div>`;
+if(c.note) html+=`<div style="font-size:10px;color:#6a6a72;margin-top:8px;border-right:2px solid #2a2a32;padding-right:8px;background:#0c0c10;padding:8px 8px 8px 0;border-radius:8px 0 0 8px">${c.note}</div>`;
+if(!done){
+if(c.type=='habit'){
+let pr=S.h[c.n]||0;let unlockAfter= c.days>=14? 2 : 1;
+html+=`<div style="margin-top:12px"><div style="font-size:10px;color:#8a9a5b;margin-bottom:6px">التقدم: ${pr}/${c.days} يوم • سيفتح التالي بعد يوم ${unlockAfter} (لكن الشهادة بعد اكمال الكل)</div><div style="display:flex;flex-wrap:wrap;gap:7px">`;for(let i=1;i<=c.days;i++)html+=`<div class="day ${i<=pr?'on':''}" onclick="clickDay(${c.n},${i})">${i}</div>`;html+=`</div></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn bo" style="height:40px;font-size:11px;flex:.8" onclick="resetH(${c.n})">فشلت اليوم -1 ⚠️</button><button class="btn bw" style="height:40px;font-size:12px;flex:1.2" onclick="finishH(${c.n})">تم اتمام كل الأيام ✓ + تأكيد</button></div>`;
+}else if(c.type=='direct'){html+=`<button class="btn bw" style="height:46px;margin-top:14px" onclick="finishD(${c.n})">تم انهاء المهمة + تأكيد • DONE + CONFIRM</button>`;}
+else{
+let pr=S.l[c.n]||0;html+=`<div style="margin-top:12px">`;c.subs.forEach((s,i)=>{html+=`<label style="display:flex;gap:10px;margin-top:8px;font-size:11.5px;background:#0c0c10;padding:8px;border-radius:10px;border:1px solid #1a1a20"><input type="checkbox" ${i<pr?'checked':''} onchange="togL(${c.n},${i})" style="width:16px;height:16px"> <span>${s}</span></label>`});html+=`</div>`;
+if(pr>= (c.subs.length>3?2:c.subs.length)){html+=`<div style="font-size:10px;color:#8a9a5b;margin-top:8px">يمكنك فتح التالي الآن، لكن اكمل الباقي للـ XP</div>`}
+if(pr>=c.subs.length) html+=`<button class="btn bw" style="height:42px;margin-top:10px;font-size:12px" onclick="finishL(${c.n})">انهاء المهارة ✓</button>`;
+}
+}else{html=`<div style="font-size:13px;font-weight:800">✅ تم اتمام المهمة</div><div style="font-size:11px;color:#666;margin-top:4px">${c.t}</div><div style="font-size:10px;color:#444;margin-top:4px">+${c.xp} XP</div>`;}
+d.innerHTML=html;list.appendChild(d);
+});
+localStorage.setItem('MDJ_FINAL',JSON.stringify(S));
+setTimeout(()=>{let last=list.lastElementChild;if(last) last.scrollIntoView({behavior:'smooth',block:'center'});},200);
+checkCert();
+}
+
+function clickDay(n,i){
+let pr=S.h[n]||0;
+let chal=challenges.find(x=>x.n==n);
+let unlockAfter= chal.days>=14? 2 : 1;
+if(i==pr+1){
+S.h[n]=i;
+// فتح التالي بعد يوم 1 او 2 مباشرة كما طلبت
+if(i>=unlockAfter && S.cur < n){
+S.cur=n;
+if(i==unlockAfter){render();return;}
+}
+render();
+}else if(i<=pr){S.h[n]=i-1;render();}
+}
+
+function resetH(n){if(confirm('هل فشلت اليوم؟ ستخسر يوما واحدا من رصيدك كعقوبة، لا ترجع للصفر - الرجل الحقيقي يقع ويقوم ولا يستسلم. متأكد؟')){let pr=S.h[n]||0;S.h[n]=Math.max(0,pr-1);render();}}
+function finishH(n){
+let c=challenges.find(x=>x.n==n);let pr=S.h[n]||0;
+if(pr<c.days){alert(`اكمل كل الأيام أولا: ${pr}/${c.days} - لا يمكنك الحصول على الشهادة حتى تكمل الكل`);return}
+if(!confirm('تأكيد اتمام كل الأيام؟ هل انت صادق؟ الله يراك.'))return;
+if(!S.done.includes(n)){S.done.push(n);S.xp+=c.xp;S.cur=n;render();}
+}
+function finishD(n){if(!confirm('هل انت صادق؟ الله يراك. هل انهيت المهمة فعلا؟'))return;let c=challenges.find(x=>x.n==n);if(!S.done.includes(n)){S.done.push(n);S.xp+=c.xp;S.cur=n;render();}}
+function togL(n,i){
+let pr=S.l[n]||0;
+if(i==pr) S.l[n]=pr+1;else if(i<pr) S.l[n]=i;
+// فتح التالي بعد 2 مهمة اذا صعبة
+let chal=challenges.find(x=>x.n==n);
+if((S.l[n]||0)>=2 && chal.subs.length>3 && S.cur==n-1){S.cur=n;render();}
+else render();
+}
+function finishL(n){let c=challenges.find(x=>x.n==n);let pr=S.l[n]||0;if(pr<c.subs.length){alert('اكمل كل المهام الصغيرة أولا');return}if(!S.done.includes(n)){S.done.push(n);S.xp+=c.xp;S.cur=n;render();}}
+
+let lastCert=0,certUrl='';
+function checkCert(){let dc=S.done.length;[25,50,75,100].forEach(m=>{if(dc>=m && lastCert<m){lastCert=m;showCert(m);}});}
+function showCert(m){
+let titles={25:'المرحلة الأولى - الاستيقاظ • AWAKENING',50:'المرحلة الثانية - الانضباط • DISCIPLINE',75:'المرحلة الثالثة - القوة • STRENGTH',100:'التكريم النهائي - شهادة مجاهد • MUJAHID'};
+let ch=charFor(S.xp);
+document.getElementById('ct').textContent=`🎉 مبروك ${S.name} - ${titles[m]}`;
+document.getElementById('cb').innerHTML=`أتممت ${m} تحدي من 100 بصدق<br>XP: ${S.xp} • الحالة: ${ch.l} ${ch.e}<br>التاريخ: ${new Date().toLocaleDateString('ar-DZ')}<br><br><b style="color:#8a9a5b">أبرز ما فعلته:</b><br>${S.done.slice(-5).map(n=>challenges.find(c=>c.n==n)?.t||'').join('<br>• ')}`;
+let can=document.getElementById('can');let ctx=can.getContext('2d');
+ctx.fillStyle='#07070a';ctx.fillRect(0,0,1080,1350);
+ctx.strokeStyle='#8a9a5b';ctx.lineWidth=12;ctx.strokeRect(20,20,1040,1310);
+ctx.strokeStyle='#1a1a20';ctx.lineWidth=1;ctx.strokeRect(32,32,1016,1286);
+ctx.fillStyle='#EDE9D6';ctx.font='900 64px Cairo';ctx.fillText('MDJAHDON',340,130);
+ctx.fillStyle='#8a9a5b';ctx.font='700 14px Cairo';ctx.fillText('OFFICIAL HARSH DISCIPLINE CERTIFICATE • شهادة رسمية',280,160);
+ctx.fillStyle='#fff';ctx.font='bold 30px Cairo';let t=titles[m];ctx.fillText(t,540-ctx.measureText(t).width/2,300);
+ctx.font='18px Cairo';ctx.fillStyle='#aaa';
+let y=380;ctx.fillText(`اللاعب: ${S.name}`,80,y);y+=32;ctx.fillText(`المستوى: ${ch.l} ${ch.e} • XP: ${S.xp} / ${TOTAL_XP}`,80,y);y+=32;ctx.fillText(`التاريخ: ${new Date().toLocaleDateString('ar-DZ')} • التحديات: ${m}/100`,80,y);y+=50;
+ctx.fillStyle='#8a9a5b';ctx.font='bold 16px Cairo';ctx.fillText('أبرز الإنجازات:',80,y);y+=28;ctx.fillStyle='#ccc';ctx.font='13px Cairo';
+S.done.slice(-7).forEach(n=>{let ct=challenges.find(c=>c.n==n);if(ct){ctx.fillText(`• ${ct.t}`,90,y);y+=22}});
+ctx.font='120px serif';ctx.fillText(ch.e,460,700);
+ctx.font='11px Cairo';ctx.fillStyle='#444';ctx.fillText(`MDJAHDON - VERIFIED - NO CHEATING - ${S.xp} XP - ${S.name}`,220,1300);
+certUrl=can.toDataURL('image/jpeg',0.92);document.getElementById('ci').src=certUrl;document.getElementById('certM').style.display='grid';
+}
+function dlCert(){let a=document.createElement('a');a.href=certUrl;a.download=`MDJAHDON-${S.name}-${Date.now()}.jpg`;a.click();}
+
+if(S.name){go('main');render();}
+</script>
+</body>
+</html>
