@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0b09">
+<meta name="description" content="MDJAHDON — 100 تحدٍّ حقيقي. رحلة تبدأ من الشاشة وتنتهي في العالم.">
+<title>MDJAHDON — 100 تحدٍّ حقيقي</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#080908;
+  --bg2:#0d0f0c;
+  --panel:#111410;
+  --panel2:#171b14;
+  --text:#f3f1e8;
+  --muted:#92968b;
+  --dim:#656a61;
+  --line:rgba(243,241,232,.10);
+  --line2:rgba(243,241,232,.16);
+  --lime:#b8c879;
+  --lime2:#89995c;
+  --max:1240px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(700px 420px at 78% 0%,rgba(184,200,121,.085),transparent 70%),
+    radial-gradient(600px 420px at 8% 36%,rgba(255,255,255,.025),transparent 70%),
+    var(--bg);
+  font-family:Cairo,system-ui,sans-serif;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:100;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.en{font-family:"DM Sans",system-ui,sans-serif;direction:ltr}
+.shell{width:min(var(--max),calc(100% - 48px));margin:auto}
+
+/* NAV */
+.nav{
+  position:fixed;z-index:50;top:0;left:0;right:0;
+  height:74px;display:flex;align-items:center;
+  border-bottom:1px solid transparent;
+  transition:.45s var(--ease);
+}
+.nav.scrolled{
+  background:rgba(8,9,8,.72);
+  border-color:var(--line);
+  backdrop-filter:blur(22px) saturate(130%);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;font:800 15px/1 "DM Sans";letter-spacing:.16em}
+.brand-dot{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 22px rgba(184,200,121,.45)}
+.nav-links{display:flex;align-items:center;gap:30px;color:#aeb1a7;font-size:12px}
+.nav-links a{transition:.25s}
+.nav-links a:hover{color:var(--text)}
+.nav-action{
+  display:inline-flex;align-items:center;gap:9px;
+  min-height:40px;padding:0 16px;border:1px solid var(--line2);
+  border-radius:9px;font-size:12px;background:rgba(255,255,255,.025);
+  transition:.3s var(--ease)
+}
+.nav-action:hover{background:var(--lime);color:#0a0b09;border-color:var(--lime);transform:translateY(-1px)}
+.nav-action b{font-family:"DM Sans";font-size:11px}
+
+/* HERO */
+.hero{min-height:100svh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-grid{
+  position:absolute;inset:0;opacity:.42;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+.hero-orb{
+  position:absolute;width:620px;height:620px;border-radius:50%;
+  right:-180px;top:-220px;
+  background:radial-gradient(circle,rgba(184,200,121,.13),rgba(184,200,121,.035) 35%,transparent 68%);
+  filter:blur(2px);pointer-events:none;
+}
+.hero-inner{
+  width:min(var(--max),calc(100% - 48px));margin:auto;
+  padding:110px 0 70px;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center;
+}
+.hero-copy{direction:rtl}
+.kicker{
+  display:inline-flex;align-items:center;gap:9px;
+  color:var(--lime);font:700 10px/1 "DM Sans";letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:25px
+}
+.kicker:before{content:"";width:25px;height:1px;background:var(--lime)}
+h1{
+  margin:0;
+  font:800 clamp(47px,6.5vw,92px)/.99 "DM Sans",Cairo,sans-serif;
+  letter-spacing:-.065em;
+  direction:ltr;text-align:left;
+  max-width:780px;
+}
+h1 .soft{color:#858a80}
+.hero-ar{
+  margin:27px 0 0;
+  font-size:18px;line-height:1.8;color:#c8cac0;max-width:570px
+}
+.hero-actions{display:flex;gap:10px;margin-top:29px;flex-wrap:wrap}
+.btn{
+  min-height:48px;padding:0 21px;border-radius:10px;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-size:13px;font-weight:700;transition:.35s var(--ease);
+  cursor:pointer
+}
+.btn-main{background:var(--lime);color:#0a0b09;border:1px solid var(--lime)}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 14px 35px rgba(184,200,121,.16)}
+.btn-ghost{background:rgba(255,255,255,.025);border:1px solid var(--line2);color:var(--text)}
+.btn-ghost:hover{background:rgba(255,255,255,.07);transform:translateY(-2px)}
+.hero-meta{
+  display:flex;gap:26px;margin-top:42px;padding-top:20px;border-top:1px solid var(--line);
+  max-width:570px
+}
+.meta-item strong{display:block;font:700 22px/1 "DM Sans";margin-bottom:7px}
+.meta-item span{font-size:10px;color:var(--muted)}
+
+/* APP MOCKUP */
+.device-wrap{direction:ltr;display:flex;justify-content:center;position:relative}
+.device{
+  width:min(390px,100%);height:650px;border:1px solid #34382f;border-radius:31px;
+  background:#0c0e0b;box-shadow:0 35px 100px rgba(0,0,0,.55),0 0 0 7px rgba(255,255,255,.015);
+  padding:10px;position:relative;transform:perspective(1200px) rotateY(-7deg) rotateX(2deg);
+  transition:transform .8s var(--ease)
+}
+.device:hover{transform:perspective(1200px) rotateY(-2deg) rotateX(0) translateY(-5px)}
+.device-screen{
+  height:100%;border-radius:23px;overflow:hidden;
+  background:
+    radial-gradient(350px 220px at 80% 0%,rgba(184,200,121,.09),transparent 70%),
+    #10130f;
+  border:1px solid rgba(255,255,255,.05);padding:18px
+}
+.app-top{display:flex;justify-content:space-between;align-items:center;color:#8e9388;font:600 9px "DM Sans";letter-spacing:.08em}
+.app-brand{color:#e9e8df;font-weight:800;letter-spacing:.14em}
+.level{display:flex;gap:6px;align-items:center}
+.level-dot{width:6px;height:6px;border-radius:50%;background:var(--lime)}
+.app-progress{margin-top:21px;height:3px;background:#272b24;border-radius:99px;overflow:hidden}
+.app-progress i{display:block;width:32%;height:100%;background:var(--lime)}
+.app-small{margin-top:27px;color:var(--lime);font:700 9px "DM Sans";letter-spacing:.12em}
+.app-number{font:700 10px "DM Sans";color:#64695f;margin-top:7px}
+.app-title{font:800 35px/1.05 Cairo,sans-serif;margin-top:9px;color:#efede4}
+.app-desc{font-size:11px;line-height:1.8;color:#8e9388;margin-top:12px}
+.app-task{
+  margin-top:22px;border:1px solid #2c3128;border-radius:13px;background:#151914;padding:15px
+}
+.app-task-head{display:flex;justify-content:space-between;color:#b8bcaf;font-size:9px}
+.app-task-main{font-size:13px;font-weight:700;margin-top:10px}
+.app-check{margin-top:15px;height:36px;border-radius:8px;background:#a9b978;color:#0b0d09;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800}
+.app-bottom{
+  position:absolute;left:18px;right:18px;bottom:16px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:6px
+}
+.app-nav{height:43px;border:1px solid #272b25;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#6f756b;font-size:8px}
+.app-nav.active{color:var(--lime);background:#181c15}
+
+/* MARQUEE */
+.marquee{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  overflow:hidden;background:#0b0d0a
+}
+.marquee-track{
+  display:flex;width:max-content;animation:marquee 24s linear infinite;
+  direction:ltr
+}
+.marquee span{
+  padding:17px 25px;color:#72776e;font:600 10px "DM Sans";letter-spacing:.18em;white-space:nowrap
+}
+.marquee span b{color:var(--lime);font-weight:600}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.section{padding:125px 0}
+.section-head{display:flex;justify-content:space-between;gap:50px;align-items:end;margin-bottom:45px}
+.eyebrow{color:var(--lime);font:700 10px "DM Sans";letter-spacing:.18em}
+.section-title{font-size:clamp(31px,4.4vw,57px);line-height:1.08;letter-spacing:-.045em;margin:10px 0 0;max-width:670px}
+.section-note{max-width:330px;color:var(--muted);font-size:13px;line-height:1.9}
+
+/* PHILOSOPHY */
+.philosophy{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:18px;overflow:hidden
+}
+.ph-card{background:var(--panel);padding:42px;min-height:270px;position:relative}
+.ph-card:first-child{background:linear-gradient(145deg,#161a13,#10120f)}
+.ph-index{font:700 11px "DM Sans";color:var(--dim);letter-spacing:.1em}
+.ph-card h3{font-size:25px;margin:45px 0 11px;letter-spacing:-.03em}
+.ph-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.9;max-width:430px}
+.ph-mark{position:absolute;right:42px;top:38px;color:var(--lime);font:500 30px "DM Sans";opacity:.8}
+
+/* JOURNEY */
+.journey{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:10px
+}
+.j-card{
+  min-height:300px;border:1px solid var(--line);border-radius:14px;background:var(--panel);
+  padding:22px;display:flex;flex-direction:column;justify-content:space-between;
+  transition:.45s var(--ease);position:relative;overflow:hidden
+}
+.j-card:after{
+  content:"";position:absolute;width:150px;height:150px;border-radius:50%;
+  right:-70px;bottom:-80px;background:rgba(184,200,121,.06);transition:.45s
+}
+.j-card:hover{transform:translateY(-7px);border-color:#41483a}
+.j-card:hover:after{transform:scale(1.4)}
+.j-top{display:flex;justify-content:space-between}
+.j-num{font:700 11px "DM Sans";color:var(--lime)}
+.j-range{font:700 10px "DM Sans";color:#5e645b}
+.j-card h3{font-size:20px;margin:0 0 8px}
+.j-card p{font-size:11px;line-height:1.8;color:var(--muted);margin:0}
+.j-line{height:1px;background:var(--line);margin-top:18px}
+
+/* DOWNLOAD */
+.download-box{
+  border:1px solid #343a2e;border-radius:20px;padding:55px;
+  background:
+    radial-gradient(600px 250px at 15% 0%,rgba(184,200,121,.10),transparent 70%),
+    linear-gradient(135deg,#141811,#0e100d);
+  display:flex;align-items:center;justify-content:space-between;gap:40px
+}
+.download-box h2{font-size:clamp(32px,4.5vw,58px);line-height:1.05;margin:0;letter-spacing:-.045em}
+.download-box p{color:var(--muted);font-size:13px;line-height:1.8;margin:13px 0 0;max-width:520px}
+.download-side{text-align:left;direction:ltr;min-width:190px}
+.file-chip{
+  display:inline-flex;padding:8px 11px;border:1px solid var(--line2);border-radius:7px;
+  font:600 10px "DM Sans";color:#aeb3a5;margin-bottom:12px
+}
+
+/* FOOTER */
+footer{padding:28px 0 40px;border-top:1px solid var(--line);color:#666c63}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;font-size:10px}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hero-inner{grid-template-columns:1fr;gap:55px;padding-top:120px}
+  .hero-copy{max-width:720px}
+  .device-wrap{justify-content:center}
+  .device{transform:none;width:min(360px,100%);height:600px}
+  .philosophy{grid-template-columns:1fr}
+  .journey{grid-template-columns:repeat(2,1fr)}
+  .download-box{flex-direction:column;align-items:flex-start}
+  .download-side{text-align:right;direction:rtl}
+}
+@media(max-width:560px){
+  .shell,.hero-inner{width:calc(100% - 30px)}
+  .nav{height:64px}
+  .brand{font-size:13px}
+  .nav-action{min-height:36px;padding:0 12px}
+  h1{font-size:clamp(43px,13vw,64px)}
+  .hero-ar{font-size:15px}
+  .hero-meta{gap:18px}
+  .meta-item strong{font-size:18px}
+  .section{padding:82px 0}
+  .section-head{display:block;margin-bottom:30px}
+  .section-note{margin-top:18px}
+  .ph-card{padding:28px;min-height:235px}
+  .ph-card h3{margin-top:42px;font-size:22px}
+  .journey{grid-template-columns:1fr 1fr}
+  .j-card{min-height:250px;padding:18px}
+  .j-card h3{font-size:17px}
+  .download-box{padding:30px 24px}
+  .footer-inner{display:block}
+  .footer-inner span{display:block;margin-top:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner shell">
+    <a href="#" class="brand"><span class="brand-dot"></span>MDJAHDON</a>
+    <nav class="nav-links">
+      <a href="#idea">الفكرة</a>
+      <a href="#journey">الرحلة</a>
+      <a href="#download">التطبيق</a>
+    </nav>
+    <a class="nav-action" href="#download">ابدأ <b>↗</b></a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-inner">
+    <div class="hero-copy reveal">
+      <div class="kicker">100 CHALLENGES / REAL WORLD</div>
+      <h1>You don't need another app.<br><span class="soft">You need a reason to leave it.</span></h1>
+      <p class="hero-ar">100 تحدٍّ. أشياء حقيقية. رحلة تبدأ من الشاشة وتنتهي في العالم.</p>
+      <div class="hero-actions">
+        <a href="#download" class="btn btn-main">ابدأ الرحلة <span>↗</span></a>
+        <a href="#idea" class="btn btn-ghost">اكتشف الفكرة</a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-item"><strong>100</strong><span>تحدٍّ</span></div>
+        <div class="meta-item"><strong>01 → 100</strong><span>مسار تقدّم</span></div>
+        <div class="meta-item"><strong>0</strong><span>وعد سهل</span></div>
+      </div>
+    </div>
+
+    <div class="device-wrap reveal">
+      <div class="device">
+        <div class="device-screen">
+          <div class="app-top"><span class="app-brand">MDJAHDON</span><span class="level"><i class="level-dot"></i> LEVEL 07</span></div>
+          <div class="app-progress"><i></i></div>
+          <div class="app-small">CURRENT CHALLENGE</div>
+          <div class="app-number">03 / 100</div>
+          <div class="app-title">100<br>ضغط</div>
+          <div class="app-desc">التزم بالمهمة كل يوم. لا تبحث عن الطريق الأسهل. ابحث عن أن تصبح شخصًا يستطيع إكمالها.</div>
+          <div class="app-task">
+            <div class="app-task-head"><span>30 DAYS</span><span>+ XP</span></div>
+            <div class="app-task-main">20 صباحًا · 20 ظهرًا · 20 عصرًا · 20 مغربًا · 20 قبل النوم</div>
+            <div class="app-check">MARK TODAY COMPLETE</div>
+          </div>
+          <div class="app-bottom">
+            <div class="app-nav active">MISSION</div><div class="app-nav">JOURNEY</div><div class="app-nav">PROGRESS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>LEAVE THE SCREEN</span><span><b>•</b></span><span>BUILD REAL SKILLS</span><span><b>•</b></span><span>DO THE HARD THING</span><span><b>•</b></span><span>RETURN TO THE WORLD</span><span><b>•</b></span>
+    <span>LEAVE THE SCREEN</span><span><b>•</b></span><span>BUILD REAL SKILLS</span><span><b>•</b></span><span>DO THE HARD THING</span><span><b>•</b></span><span>RETURN TO THE WORLD</span><span><b>•</b></span>
+  </div>
+</div>
+
+<section class="section" id="idea">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">THE IDEA</div>
+        <h2 class="section-title">الهاتف ليس المشكلة.<br>أن يصبح عالمك كله، هي المشكلة.</h2>
+      </div>
+      <p class="section-note">MDJAHDON لا تحاول أن تكون اللعبة التالية على هاتفك. هي نظام يدفعك للخروج منه — إلى مهارة، مكان، عادة، تجربة أو إنجاز حقيقي.</p>
+    </div>
+
+    <div class="philosophy reveal">
+      <article class="ph-card">
+        <span class="ph-index">01 — THE APP</span><span class="ph-mark">↗</span>
+        <h3>افتح. اعرف مهمتك. اخرج.</h3>
+        <p>واجهة بسيطة تخبرك بما عليك فعله الآن، وتترك التفاصيل المهمة للعالم الحقيقي.</p>
+      </article>
+      <article class="ph-card">
+        <span class="ph-index">02 — THE WORLD</span><span class="ph-mark">●</span>
+        <h3>الإنجاز لا يحدث داخل الشاشة.</h3>
+        <p>تعلّم، تحرّك، اصنع، أصلح، اقرأ، جرّب. ثم عد وسجّل ما فعلته.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="journey">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">THE JOURNEY</div>
+        <h2 class="section-title">ليست قائمة مهام.<br>إنها رحلة تتغيّر معها.</h2>
+      </div>
+      <p class="section-note">تبدأ بأشياء بسيطة. ثم تصبح المهام أطول، أصعب، وأكثر واقعية. التقدّم هنا ليس رقمًا فقط.</p>
+    </div>
+
+    <div class="journey">
+      <article class="j-card reveal"><div class="j-top"><span class="j-num">01</span><span class="j-range">01—20</span></div><div><h3>اكسر العادات</h3><p>ابدأ باستعادة السيطرة على يومك.</p><div class="j-line"></div></div></article>
+      <article class="j-card reveal"><div class="j-top"><span class="j-num">02</span><span class="j-range">21—40</span></div><div><h3>اكتسب مهارات</h3><p>أشياء لم تكن تعرف كيف تفعلها.</p><div class="j-line"></div></div></article>
+      <article class="j-card reveal"><div class="j-top"><span class="j-num">03</span><span class="j-range">41—60</span></div><div><h3>اختبر نفسك</h3><p>المهام تبدأ بالخروج من منطقة الراحة.</p><div class="j-line"></div></div></article>
+      <article class="j-card reveal"><div class="j-top"><span class="j-num">04</span><span class="j-range">61—80</span></div><div><h3>اصنع شيئًا</h3><p>قدرة حقيقية، نتيجة حقيقية.</p><div class="j-line"></div></div></article>
+      <article class="j-card reveal"><div class="j-top"><span class="j-num">05</span><span class="j-range">81—100</span></div><div><h3>أكمل الرحلة</h3><p>وفي النهاية، تعرف أنك فعلتها.</p><div class="j-line"></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="download">
+  <div class="shell">
+    <div class="download-box reveal">
+      <div>
+        <div class="eyebrow">THE APP</div>
+        <h2>العالم الحقيقي<br>ما زال يعمل.</h2>
+        <p>حمّل MDJAHDON، افتح أول تحدٍّ، واترك الهاتف يقوم بدوره الوحيد: أن يخبرك بما يجب أن تفعله ثم يختفي من الطريق.</p>
+      </div>
+      <div class="download-side">
+        <div class="file-chip">HTML · MOBILE FIRST · OFFLINE</div><br>
+        <a class="btn btn-main" href="mdjahdon-1.html">فتح MDJAHDON ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-inner shell">
+    <span class="en">MDJAHDON — 100 REAL CHALLENGES</span>
+    <span>تقدّمك يُقاس بما فعلته، لا بما وعدت نفسك أن تفعله.</span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
+
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach((entry,i)=>{
+    if(entry.isIntersecting){
+      setTimeout(()=>entry.target.classList.add('in'),Math.min(i*45,180));
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+</script>
+</body>
+</html>
